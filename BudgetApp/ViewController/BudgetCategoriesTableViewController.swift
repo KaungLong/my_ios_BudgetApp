@@ -41,7 +41,7 @@ class BudgetCategoriesTableViewController: UITableViewController {
         setupUI()
         
         // register cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BudgetTableViewCell")
+        tableView.register(BudgetTableViewCell.self, forCellReuseIdentifier: "BudgetTableViewCell")
     }
     
     @objc func showAddBudgetCategory(_ sender: UIBarButtonItem) {
@@ -62,15 +62,44 @@ class BudgetCategoriesTableViewController: UITableViewController {
         return (fetchedResultsController.fetchedObjects ?? []).count
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let budgetCategory = fetchedResultsController.object(at: indexPath)
+        // perform navigation
+        self.navigationController?.pushViewController(BudgetDetailViewController(budgetCategory: budgetCategory, persistentContainer: persistentContainer), animated: true)
+        
+    }
+    
+    private func deleteBudgetCategory(_ budgetCategory: BudgetCategory){
+        
+        persistentContainer.viewContext.delete(budgetCategory)
+        do {
+            try persistentContainer.viewContext.save()
+            
+        } catch{
+            //show an alert
+            showAlert(title: "Error", message: "Can not save budget category.")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            let budgetCategory = fetchedResultsController.object(at: indexPath)
+            deleteBudgetCategory(budgetCategory)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath) as? BudgetTableViewCell else{
+            return BudgetTableViewCell(style: .default, reuseIdentifier: "BudgetTableViewCell")
+        }
+        cell.accessoryType = .disclosureIndicator
         
         let budgetCategory = fetchedResultsController.object(at: indexPath)
         
-        var configuration = cell.defaultContentConfiguration()
-        configuration.text = budgetCategory.name
-        cell.contentConfiguration = configuration
+        cell.configure(budgetCategory)
         
         return cell
     }
