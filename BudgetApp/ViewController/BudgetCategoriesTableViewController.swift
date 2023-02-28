@@ -95,11 +95,11 @@ class BudgetCategoriesTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetTableViewCell", for: indexPath) as? BudgetTableViewCell else{
             return BudgetTableViewCell(style: .default, reuseIdentifier: "BudgetTableViewCell")
         }
-        cell.accessoryType = .disclosureIndicator
-        
+
         let budgetCategory = fetchedResultsController.object(at: indexPath)
-        
+
         cell.configure(budgetCategory)
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }

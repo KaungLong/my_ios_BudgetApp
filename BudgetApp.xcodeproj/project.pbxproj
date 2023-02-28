@@ -13,6 +13,7 @@
 		415E504C29926BF50003C50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 415E504B29926BF50003C50E /* Assets.xcassets */; };
 		415E504F29926BF50003C50E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 415E504D29926BF50003C50E /* LaunchScreen.storyboard */; };
 		415E505829926E8F0003C50E /* BudgetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 415E505629926E8F0003C50E /* BudgetModel.xcdatamodeld */; };
+		419A9AE229ADEA2E00D8A5DC /* my_ios_BudgetApp_demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 419A9AE129ADEA2E00D8A5DC /* my_ios_BudgetApp_demo.gif */; };
 		41B3F86E29937F19003E1244 /* AddBudgetCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B3F86D29937F19003E1244 /* AddBudgetCategoryViewController.swift */; };
 		41B3F87129938B29003E1244 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B3F87029938B29003E1244 /* String+Extension.swift */; };
 		41B3F8732993A06F003E1244 /* BudgetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B3F8722993A06F003E1244 /* BudgetDetailsViewController.swift */; };
@@ -32,6 +33,7 @@
 		415E504E29926BF50003C50E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		415E505029926BF50003C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		415E505729926E8F0003C50E /* BudgetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetModel.xcdatamodel; sourceTree = "<group>"; };
+		419A9AE129ADEA2E00D8A5DC /* my_ios_BudgetApp_demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = my_ios_BudgetApp_demo.gif; sourceTree = "<group>"; };
 		41B3F86D29937F19003E1244 /* AddBudgetCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetCategoryViewController.swift; sourceTree = "<group>"; };
 		41B3F87029938B29003E1244 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		41B3F8722993A06F003E1244 /* BudgetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailsViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		415E503629926BF20003C50E = {
 			isa = PBXGroup;
 			children = (
+				419A9AE029ADEA1E00D8A5DC /* Demo */,
 				415E504129926BF20003C50E /* BudgetApp */,
 				415E504029926BF20003C50E /* Products */,
 			);
@@ -72,18 +75,26 @@
 		415E504129926BF20003C50E /* BudgetApp */ = {
 			isa = PBXGroup;
 			children = (
-				41B3F88029942B86003E1244 /* ViewController */,
-				41B3F87929942671003E1244 /* Models */,
-				41B3F87629942267003E1244 /* Cell */,
-				41B3F86F29938B07003E1244 /* Extension */,
 				415E504229926BF20003C50E /* AppDelegate.swift */,
 				415E504429926BF20003C50E /* SceneDelegate.swift */,
+				41B3F88029942B86003E1244 /* ViewController */,
+				41B3F87929942671003E1244 /* Models */,
+				41B3F87629942267003E1244 /* View */,
+				41B3F86F29938B07003E1244 /* Extension */,
 				415E504B29926BF50003C50E /* Assets.xcassets */,
 				415E504D29926BF50003C50E /* LaunchScreen.storyboard */,
 				415E505029926BF50003C50E /* Info.plist */,
 				415E505629926E8F0003C50E /* BudgetModel.xcdatamodeld */,
 			);
 			path = BudgetApp;
+			sourceTree = "<group>";
+		};
+		419A9AE029ADEA1E00D8A5DC /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				419A9AE129ADEA2E00D8A5DC /* my_ios_BudgetApp_demo.gif */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		41B3F86F29938B07003E1244 /* Extension */ = {
@@ -97,12 +108,12 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		41B3F87629942267003E1244 /* Cell */ = {
+		41B3F87629942267003E1244 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				41B3F87729942273003E1244 /* BudgetCategoryTableViewCell.swift */,
 			);
-			path = Cell;
+			path = View;
 			sourceTree = "<group>";
 		};
 		41B3F87929942671003E1244 /* Models */ = {
@@ -181,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419A9AE229ADEA2E00D8A5DC /* my_ios_BudgetApp_demo.gif in Resources */,
 				415E504F29926BF50003C50E /* LaunchScreen.storyboard in Resources */,
 				415E504C29926BF50003C50E /* Assets.xcassets in Resources */,
 			);

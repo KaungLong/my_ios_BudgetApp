@@ -21,6 +21,7 @@ class BudgetDetailViewController: UIViewController {
         textfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textfield.leftViewMode = .always
         textfield.borderStyle = .roundedRect
+        textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield
     }()
     
@@ -30,6 +31,7 @@ class BudgetDetailViewController: UIViewController {
         textfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textfield.leftViewMode = .always
         textfield.borderStyle = .roundedRect
+        textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield
     }()
     
@@ -38,6 +40,7 @@ class BudgetDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TransactionTableViewCell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -47,6 +50,7 @@ class BudgetDetailViewController: UIViewController {
         let button = UIButton(configuration: config)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Save Transaction", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
       
     }()
@@ -56,18 +60,21 @@ class BudgetDetailViewController: UIViewController {
         label.textColor = UIColor.red
         label.text = ""
         label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.text = budgetCategory.amount.formatAsCurrency()
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     lazy var transactionsTotalLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -179,7 +186,7 @@ class BudgetDetailViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = UIStackView.spacingUseSystem
-        stackView.isLayoutMarginsRelativeArrangement = true
+//        stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         
         stackView.addArrangedSubview(amountLabel)
@@ -198,11 +205,13 @@ class BudgetDetailViewController: UIViewController {
         amountTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
         saveTransactionButton.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
         saveTransactionButton.addTarget(self, action: #selector(saveTransactionButtonPressed), for: .touchUpInside)
-        
-        stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+
         stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor,constant: 10).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor,constant: -10).isActive = true
+
         
-        tableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        tableView.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
         tableView.heightAnchor.constraint(equalToConstant: 600).isActive = true
         
     }
